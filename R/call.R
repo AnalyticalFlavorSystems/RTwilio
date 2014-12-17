@@ -22,7 +22,7 @@ require(httr)
 #'
 twilio_call <- function(accountSID, auth_token, xmlURL, from, to) {
    url <- paste0('https://api.twilio.com/2010-04-01/Accounts/', accountSID, '/Calls.json')
-   body = list(Url=xmlURL, From=from, Method="GET", To=to)
+   body <- list(Url=xmlURL, From=from, Method="GET", To=to)
    .post(url, body, accountSID, auth_token)
 } 
 
