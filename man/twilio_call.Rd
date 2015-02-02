@@ -12,7 +12,7 @@ twilio_call(accountSID, auth_token, xmlURL, from, to)
 
 \item{xmlURL}{The URL where the TwiML file is located.}
 
-\item{from}{The phonenumber to call.  Check Your Twilio account for the number.
+\item{from}{The phonenumber that calls.  Check Your Twilio account for the number.
 Make sure to include the international number.}
 
 \item{to}{The phone number to call.  Make sure to include the international number.}
