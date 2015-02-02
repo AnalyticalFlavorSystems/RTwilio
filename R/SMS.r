@@ -10,7 +10,7 @@
 #'
 #' @param message the message to send in  a text.
 #'
-#' @param From The phonenumber to call. Check Your Twilio account for the number.
+#' @param From The phonenumber that calls. Check Your Twilio account for the number.
 #' Make sure to include the international number.
 #'
 #' @param To The phone number to call. \emph{You can include multple numbers as a quoted charecter

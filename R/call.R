@@ -13,7 +13,7 @@ require(httr)
 #'
 #' @param xmlURL The URL where the TwiML file is located.
 #'
-#' @param from The phonenumber to call.  Check Your Twilio account for the number.  
+#' @param from The phonenumber that calls.  Check Your Twilio account for the number.  
 #' Make sure to include the international number.
 #'
 #' @param to The phone number to call.  Make sure to include the international number.
@@ -29,20 +29,20 @@ twilio_call <- function(accountSID, auth_token, xmlURL, from, to) {
 
 #' Send an outbound call without writing the file to disk
 #'
-#' this function sends an outbound call using a twillio twimlit,
-#' allowing statless applications calling functionality
+#' this function sends an outbound call using a twillio twimlet,
+#' allowing stateless application calling functionality
 #'
 #' @param accountSID Your account ID
 #'
 #' @param auth_token Your secret token
 #'
-#' @param message the message to transcribe to speach. By default this will be spoken in by a female
+#' @param message the message to transcribe to speech. By default this will be spoken by a female
 #' in british english and repeated 3 times. \emph{Either message or Twxml must be null!
 #' you cannot send a call with both parameters set}
 #'
 #' @param TwXML Any properly formated XML acceptable by Twillio
 #'
-#' @param from The phonenumber to call. Check Your Twilio account for the number.
+#' @param from The phonenumber that calls. Check Your Twilio account for the number.
 #' Make sure to include the international number.
 #'
 #' @param to The phone number to call. Make sure to include the international number.
