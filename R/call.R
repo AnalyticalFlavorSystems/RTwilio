@@ -49,13 +49,19 @@ twilio_call <- function(accountSID, auth_token, xmlURL, from, to) {
 #'
 #' @export
 #'
-twilio_stateless_call <- function(accountSID, auth_token, message=NULL, TwXML=NULL, from, to) {
+twilio_stateless_call <- function(accountSID, auth_token, message=NULL, TwXML=NULL, From, To) {
   ## Initial Error Checking
   if(is.null(message) & is.null(TwXML)) stop("Either message or TwXML must be set!")
   if(all(!is.null(message), !is.null(TwXML))) stop("Only message or TwXML can be set at one time!")
 
-  ## Base URL for POST
+  if(is.null(From)) stop("A Twillio registered From number must be set")
+  if(is.null(To)) stop("A To number must be set")
+
+
+  ## Base Auth URL for POST
   url <- paste0('https://api.twilio.com/2010-04-01/Accounts/', accountSID, '/Calls.json')
+  ## Base URL for stateless Call
+  callURL <- "http://twimlets.com/echo?Twiml="
 
   if(is.null(TwXML)) {
     TwXML <- URLencode(paste0("<Response><Say voice='alice' language='en-gb' loop='3'>", message,
@@ -65,8 +71,22 @@ twilio_stateless_call <- function(accountSID, auth_token, message=NULL, TwXML=NU
     TwXML <- URLencode(as(TwXML, "character"))
   }
 
-  body <- list(Url=paste0("http://twimlets.com/echo?Twiml=", TwXML), From=from, Method="GET", To=to)
-  .post(url, body, accountSID, auth_token)
+  ## Implicit Multi Call
+  if(length(To) > 1) {
+    sapply(To, function(z) {
+      .post(url, list(Url=paste0(callURL, TwXML), From=From, Method="GET", To=z), accountSID, auth_token)
+      ## Sleep 1 second before sending SMS:
+      ### Requiered becuase of Call+SMS rate-limiting from Twillio!
+      Sys.sleep(1)
+      })
+  } else {
+    
+    ## Single Call
+    .post(url, list(Url=paste0(callURL, TwXML), From=From, Method="GET", To=To), accountSID, auth_token)
+    ## Sleep 1 second before sending SMS:
+    ### Requiered becuase of Call+SMS rate-limiting from Twillio!
+    Sys.sleep(1)
+  }
 }
 
 
