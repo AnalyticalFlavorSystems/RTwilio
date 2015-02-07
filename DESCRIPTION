@@ -10,6 +10,7 @@ Depends:
 Imports:
     jsonlite,
     RCurl,
-    httr
+    httr,
+    XML
 License: MIT + file LICENSE
 LazyData: true
