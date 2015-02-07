@@ -90,6 +90,10 @@ twilio_stateless_call <- function(accountSID, auth_token, message=NULL, TwXML=NU
 }
 
 
+#' A convience wraper for Post 
+#' 
+#' @export
+#'
 .post <- function(url, body, accountSID, auth_token) {
   res <- POST(url = url, user_agent="RTwilio", 
               config=authenticate(accountSID, auth_token, "basic"), body=body)
