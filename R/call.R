@@ -77,7 +77,6 @@ twilio_stateless_call <- function(accountSID, auth_token, message=NULL, TwXML=NU
       .post(url, list(Url=paste0(callURL, TwXML), From=From, Method="GET", To=z), accountSID, auth_token)
       ## Sleep 1 second before sending SMS:
       ### Requiered becuase of Call+SMS rate-limiting from Twillio!
-      Sys.sleep(1)
       })
   } else {
     
@@ -85,7 +84,6 @@ twilio_stateless_call <- function(accountSID, auth_token, message=NULL, TwXML=NU
     .post(url, list(Url=paste0(callURL, TwXML), From=From, Method="GET", To=To), accountSID, auth_token)
     ## Sleep 1 second before sending SMS:
     ### Requiered becuase of Call+SMS rate-limiting from Twillio!
-    Sys.sleep(1)
   }
 }
 
