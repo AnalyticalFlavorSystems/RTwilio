@@ -1,7 +1,3 @@
-require(jsonlite)
-require(httr)
-
-
 #' Call someone with a TwiML Voice
 #'
 #' You can use this to call someone and use a pre-uploaded twilio XML (TwiML) 
@@ -75,19 +71,20 @@ twilio_stateless_call <- function(accountSID, auth_token, message=NULL, TwXML=NU
   if(length(To) > 1) {
     sapply(To, function(z) {
       .post(url, list(Url=paste0(callURL, TwXML), From=From, Method="GET", To=z), accountSID, auth_token)
-      ## Sleep 1 second before sending SMS:
-      ### Requiered becuase of Call+SMS rate-limiting from Twillio!
+      ### Don't worry about Call+SMS rate-limiting from Twillio here!
+      ### Twillio keeps its own message queue
       })
   } else {
     
     ## Single Call
     .post(url, list(Url=paste0(callURL, TwXML), From=From, Method="GET", To=To), accountSID, auth_token)
-    ## Sleep 1 second before sending SMS:
-    ### Requiered becuase of Call+SMS rate-limiting from Twillio!
+      ### Don't worry about Call+SMS rate-limiting from Twillio here!
+      ### Twillio keeps its own message queue
   }
 }
 
 
+# Internal Helper function - do not export
 .post <- function(url, body, accountSID, auth_token) {
   res <- POST(url = url, user_agent="RTwilio", 
               config=authenticate(accountSID, auth_token, "basic"), body=body)
