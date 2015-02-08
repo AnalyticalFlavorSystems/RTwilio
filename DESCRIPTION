@@ -1,8 +1,12 @@
 Package: RTwilio
 Title: This package is an api wrapper for R to use twilio
-Version: 0.1
-Author: Evan Farrell <evandev@gastrograph.com>
-Maintainer: Evan Farrell <evandev@gastrograph.com>
+Version: 0.5
+Authors@R: c(
+          person("Evan", "Farrell", email = "evandev@gastrograph.com",
+          role = c("aut", "cre")),
+          person("Jason", "Cohen", email = "jasoncec@gastrograph.com",
+          role = c("aut", ))
+          )
 Description: This package is an api wrapper that will call/text and other
     things via the twilio api.
 Depends:
