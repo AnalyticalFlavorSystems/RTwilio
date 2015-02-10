@@ -1,6 +1,6 @@
 Package: RTwilio
 Title: This package is an api wrapper for R to use twilio
-Version: 0.1
+Version: 0.2
 Author: Evan Farrell <evandev@gastrograph.com>
 Maintainer: Evan Farrell <evandev@gastrograph.com>
 Description: This package is an api wrapper that will call/text and other

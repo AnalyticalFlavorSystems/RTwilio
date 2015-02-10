@@ -3,3 +3,6 @@
 export(twilio_call)
 export(twilio_stateless_SMS)
 export(twilio_stateless_call)
+import(RCurl)
+import(XML)
+import(httr)
